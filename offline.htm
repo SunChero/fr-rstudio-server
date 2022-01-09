@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+#
+# offline.htm
+#
+# Copyright (C) 2021 by RStudio, PBC
+#
+# This program is licensed to you under the terms of version 3 of the
+# GNU Affero General Public License. This program is distributed WITHOUT
+# ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING THOSE OF NON-INFRINGEMENT,
+# MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. Please refer to the
+# AGPL (http://www.gnu.org/licenses/agpl-3.0.txt) for more details.
+#
+-->
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>RStudio Offline</title>
+<link rel="shortcut icon" href="images/favicon.ico" />
+
+<style>
+
+body {
+  background-color: #fff;
+}
+body, td {
+  font-family: Lucida Grande, Lucida Sans Unicode, Helvetica, sans-serif;
+  font-size: 11pt;
+}
+
+
+
+#banner {
+  background-color: #e0e2e5;
+  margin: 30px 20px 70px 20px;
+  padding: 8px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+#border {
+  width: 300px;
+  border: 4px solid #e0e2e5;
+  padding: 8px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  margin: 0 auto;
+}
+#image {
+  margin-right: -18px;
+}
+
+#caption {
+  text-align: left;
+  border-bottom: 4px solid #e0e2e5;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: normal;
+  width: 250px;
+}
+
+#detail {
+  color: #aaa;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+</style>
+
+<script>
+   function getBaseUri()
+   {
+      var baseUri = "#!base_uri#";
+      if (!baseUri)
+      {
+        baseUri = window.location.href;
+      }
+      var index = baseUri.lastIndexOf("#!request_uri#");
+      if (index > 0)
+      {
+        return baseUri.substring(0, index);
+      }
+      return "/";
+   }
+
+   var iconLink = document.createElement("link");
+   iconLink.href = getBaseUri() + "/images/favicon.ico";
+   iconLink.rel = "shortcut icon";
+
+   document.getElementsByTagName("head")[0].appendChild(iconLink);
+</script>
+
+</head>
+
+<body>
+
+<h3 id="banner"><a href="http://www.rstudio.com"><img src="images/rstudio.png" id="bannerImage" width="78" height="24" title="RStudio" alt="RStudio"/></a></h3>
+
+<table id="border">
+  <tr>
+    <td><img alt id="image" src="images/offline.png"/></td>
+    <td>
+      <h2 id="caption">RStudio Temporarily Offline</h2>
+      <div id="detail">RStudio is temporarily offline due to system maintenance. We apologize for the inconvenience, please try again in a few minutes.</div>
+    </td>
+  </tr>
+</table>
+
+<script>
+
+  document.getElementById("bannerImage").src = getBaseUri() + "/images/rstudio.png";
+  document.getElementById("image").src = getBaseUri() + "/images/offline.png";
+
+</script>
+
+</body>
+
+</html>
